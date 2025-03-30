@@ -11,6 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_svg: ^2.0.9
 
   cupertino_icons: ^1.0.8
 
@@ -22,3 +23,11 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  # get pictues from assets
+  assets:
+    - assets/task-1.svg
+    - assets/task-2.svg
+    - assets/bank-1.svg
+    - assets/bank-2.svg
+    - assets/timer-1.svg
+    - assets/timer-2.svg
