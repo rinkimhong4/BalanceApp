@@ -13,8 +13,8 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _selectedPage = 0;
-  final _listPages = [BalanceScreen(), TaskScreen(), TimerScreen()];
   final _iconsSize = 24.0;
+  final _listPages = [BalanceScreen(), TaskScreen(), TimerScreen()];
 
   @override
   Widget build(BuildContext context) {
