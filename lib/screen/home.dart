@@ -13,8 +13,12 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _selectedPage = 0;
-  final _iconsSize = 24.0;
-  final _listPages = [BalanceScreen(), TaskScreen(), TimerScreen()];
+  final double _iconsSize = 24.0;
+  final List<Widget> _listPages = [
+    BalanceScreen(),
+    TaskScreen(),
+    TimerScreen(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +29,7 @@ class _HomeState extends State<Home> {
     );
   }
 
-  get _buildBottomNavigationBar => BottomNavigationBar(
+  Widget get _buildBottomNavigationBar => BottomNavigationBar(
     items: [
       BottomNavigationBarItem(
         icon: SvgPicture.asset(
@@ -33,7 +37,6 @@ class _HomeState extends State<Home> {
           width: _iconsSize,
           height: _iconsSize,
         ),
-
         label: 'Balance',
       ),
       BottomNavigationBarItem(
@@ -60,11 +63,13 @@ class _HomeState extends State<Home> {
       });
     },
     type: BottomNavigationBarType.fixed,
-    selectedLabelStyle: TextStyle(fontSize: 13.0, fontFamily: 'Inter'),
-    unselectedLabelStyle: TextStyle(
+    selectedLabelStyle: const TextStyle(fontSize: 13.0, fontFamily: 'Inter'),
+    unselectedLabelStyle: const TextStyle(
       fontSize: 12.0,
       fontFamily: 'Inter',
       color: Colors.grey,
     ),
+    selectedItemColor: Colors.black,
+    unselectedItemColor: Colors.grey,
   );
 }
