@@ -9,6 +9,7 @@ android {
     namespace = "com.example.balance"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
+  
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11

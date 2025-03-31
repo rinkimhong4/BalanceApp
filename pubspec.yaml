@@ -32,8 +32,4 @@ flutter:
     - assets/bank-2.svg
     - assets/timer-1.svg
     - assets/timer-2.svg
-
-font:
-  - family: "Inter"
-    fonts:
-      - asset: Inter-VariableFont_opsz,wght.ttf
+    - assets/Bell.svg

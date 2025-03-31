@@ -29,7 +29,7 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Widget get _buildBottomNavigationBar => BottomNavigationBar(
+  get _buildBottomNavigationBar => BottomNavigationBar(
     items: [
       BottomNavigationBarItem(
         icon: SvgPicture.asset(
