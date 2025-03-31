@@ -60,9 +60,11 @@ class _HomeState extends State<Home> {
       });
     },
     type: BottomNavigationBarType.fixed,
-    selectedItemColor: Colors.black,
-    unselectedItemColor: Colors.black,
     selectedLabelStyle: TextStyle(fontSize: 13.0, fontFamily: 'Inter'),
-    unselectedLabelStyle: TextStyle(fontSize: 12.0, fontFamily: 'Inter'),
+    unselectedLabelStyle: TextStyle(
+      fontSize: 12.0,
+      fontFamily: 'Inter',
+      color: Colors.grey,
+    ),
   );
 }
