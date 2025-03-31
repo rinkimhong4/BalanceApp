@@ -11,7 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_svg: ^2.0.9
+  flutter_svg: ^2.0.17
+  google_fonts: ^6.2.1
 
   cupertino_icons: ^1.0.8
 
@@ -31,3 +32,8 @@ flutter:
     - assets/bank-2.svg
     - assets/timer-1.svg
     - assets/timer-2.svg
+
+font:
+  - family: "Inter"
+    fonts:
+      - asset: Inter-VariableFont_opsz,wght.ttf
