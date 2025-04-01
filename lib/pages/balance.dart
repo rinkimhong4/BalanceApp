@@ -23,7 +23,7 @@ class _BalanceScreenState extends State<BalanceScreen> {
     title: Text(
       'Hi, Kimhong!',
       style: GoogleFonts.inter(
-        fontSize: 24,
+        fontSize: 22,
         fontWeight: FontWeight.w300,
         color: Colors.white,
       ),

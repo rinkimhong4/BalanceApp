@@ -2,49 +2,69 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TaskScreen extends StatelessWidget {
+class TaskScreen extends StatefulWidget {
   const TaskScreen({super.key});
+
+  @override
+  State<TaskScreen> createState() => _TaskScreenState();
+}
+
+class _TaskScreenState extends State<TaskScreen> {
+  final Color primaryColor = const Color(0xFF3629B7);
+  final double _tabFontSize = 14.0;
+  final double _unselectedTabFontSize = 12.0;
+
+  List<Widget> _buildTabBar() {
+    return [
+      Tab(child: Text('To-Do', style: TextStyle(fontSize: _tabFontSize))),
+      Tab(child: Text('Progress', style: TextStyle(fontSize: _tabFontSize))),
+      Tab(child: Text('Completed', style: TextStyle(fontSize: _tabFontSize))),
+    ];
+  }
+
+  AppBar _buildAppBar() {
+    return AppBar(
+      title: Text(
+        'Hi, Kimhong!',
+        style: GoogleFonts.inter(
+          fontSize: 22,
+          fontWeight: FontWeight.w300,
+          color: Colors.white,
+        ),
+      ),
+      bottom: TabBar(
+        tabs: _buildTabBar(),
+        indicatorColor: Colors.transparent,
+        labelColor: Colors.white,
+        unselectedLabelColor: Colors.white60,
+        unselectedLabelStyle: TextStyle(fontSize: _unselectedTabFontSize),
+      ),
+      centerTitle: true,
+      backgroundColor: primaryColor,
+      actions: [
+        IconButton(
+          onPressed: () {},
+          icon: SvgPicture.asset('assets/Bell.svg', width: 24, height: 24),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildBodyApp() {
+    return const TabBarView(
+      children: [
+        Center(child: Text('To-Do')),
+        Center(child: Text('Progress')),
+        Center(child: Text('Completed')),
+      ],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: _tabBar.length,
-      child: Scaffold(appBar: _appBar, body: _bodyApp),
+      length: _buildTabBar().length,
+      child: Scaffold(appBar: _buildAppBar(), body: _buildBodyApp()),
     );
   }
 }
-
-Color primaryColor = Color(0xFF3629B7);
-get _tabBar => const [
-  Tab(icon: Icon(Icons.home), text: 'Home'),
-  Tab(icon: Icon(Icons.search), text: 'Search'),
-  Tab(icon: Icon(Icons.settings), text: 'Settings'),
-];
-
-get _appBar => AppBar(
-  title: Text(
-    'Hi, Kimhong!',
-    style: GoogleFonts.inter(
-      fontSize: 20,
-      fontWeight: FontWeight.w300,
-      color: Colors.white,
-    ),
-  ),
-  bottom: TabBar(tabs: _tabBar, indicatorColor: Colors.amber),
-  centerTitle: true,
-  backgroundColor: primaryColor,
-  actions: [
-    IconButton(
-      onPressed: () {},
-      icon: SvgPicture.asset('assets/Bell.svg', width: 24, height: 24),
-    ),
-  ],
-);
-
-get _bodyApp => TabBarView(
-  children: [
-    Column(children: [Text('To-Do')]),
-    Column(children: [Text('progress')]),
-    Column(children: [Text('completed')]),
-  ],
-);

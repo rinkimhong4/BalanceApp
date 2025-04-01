@@ -18,7 +18,7 @@ get _appBar => AppBar(
     'Hi, Kimhong!',
 
     style: GoogleFonts.inter(
-      fontSize: 24,
+      fontSize: 22,
       fontWeight: FontWeight.w300,
       color: Colors.white,
     ),
