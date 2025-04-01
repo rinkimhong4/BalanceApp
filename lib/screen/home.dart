@@ -14,11 +14,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _selectedPage = 0;
   final double _iconsSize = 24.0;
-  final List<Widget> _listPages = [
-    BalanceScreen(),
-    TaskScreen(),
-    TimerScreen(),
-  ];
+  final _listPages = [BalanceScreen(), TaskScreen(), TimerScreen()];
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +24,8 @@ class _HomeState extends State<Home> {
       bottomNavigationBar: _buildBottomNavigationBar,
     );
   }
+
+  Color primaryColor = Color(0xFF3629B7);
 
   get _buildBottomNavigationBar => BottomNavigationBar(
     items: [
@@ -56,6 +54,8 @@ class _HomeState extends State<Home> {
         label: 'Timer',
       ),
     ],
+    elevation: 0,
+    backgroundColor: primaryColor.withAlpha(15),
     currentIndex: _selectedPage,
     onTap: (index) {
       setState(() {

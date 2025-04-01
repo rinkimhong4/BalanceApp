@@ -7,21 +7,30 @@ class TaskScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: _appBar);
+    return DefaultTabController(
+      length: _tabBar.length,
+      child: Scaffold(appBar: _appBar, body: _bodyApp),
+    );
   }
 }
 
 Color primaryColor = Color(0xFF3629B7);
+get _tabBar => const [
+  Tab(icon: Icon(Icons.home), text: 'Home'),
+  Tab(icon: Icon(Icons.search), text: 'Search'),
+  Tab(icon: Icon(Icons.settings), text: 'Settings'),
+];
 
 get _appBar => AppBar(
   title: Text(
-    'Tasks',
+    'Hi, Kimhong!',
     style: GoogleFonts.inter(
-      fontSize: 28,
-      fontWeight: FontWeight.w400,
+      fontSize: 20,
+      fontWeight: FontWeight.w300,
       color: Colors.white,
     ),
   ),
+  bottom: TabBar(tabs: _tabBar, indicatorColor: Colors.amber),
   centerTitle: true,
   backgroundColor: primaryColor,
   actions: [
@@ -29,5 +38,13 @@ get _appBar => AppBar(
       onPressed: () {},
       icon: SvgPicture.asset('assets/Bell.svg', width: 24, height: 24),
     ),
+  ],
+);
+
+get _bodyApp => TabBarView(
+  children: [
+    Column(children: [Text('To-Do')]),
+    Column(children: [Text('progress')]),
+    Column(children: [Text('completed')]),
   ],
 );

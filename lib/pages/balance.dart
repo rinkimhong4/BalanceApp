@@ -19,13 +19,12 @@ class _BalanceScreenState extends State<BalanceScreen> {
   }
 
   Color primaryColor = Color(0xFF3629B7);
-
   get _appBar => AppBar(
     title: Text(
-      'Balance',
+      'Hi, Kimhong!',
       style: GoogleFonts.inter(
-        fontSize: 28,
-        fontWeight: FontWeight.w400,
+        fontSize: 24,
+        fontWeight: FontWeight.w300,
         color: Colors.white,
       ),
     ),
@@ -38,4 +37,6 @@ class _BalanceScreenState extends State<BalanceScreen> {
       ),
     ],
   );
+
+  // get _tabBarApp => TabBar()
 }
