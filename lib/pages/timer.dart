@@ -7,18 +7,23 @@ class TimerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: _appBar);
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(appBar: _appBar, body: _buildBodyApp()),
+    );
   }
 }
 
-Color primaryColor = Color(0xFF3629B7);
+const Color primaryColor = Color(0xFF3629B7);
+const double _titleSize = 22;
+const double _tabFontSize = 14.0;
+const double _unselectedTabFontSize = 12.0;
 
-get _appBar => AppBar(
+PreferredSizeWidget get _appBar => AppBar(
   title: Text(
     'Hi, Kimhong!',
-
     style: GoogleFonts.inter(
-      fontSize: 22,
+      fontSize: _titleSize,
       fontWeight: FontWeight.w300,
       color: Colors.white,
     ),
@@ -31,4 +36,21 @@ get _appBar => AppBar(
       icon: SvgPicture.asset('assets/Bell.svg', width: 24, height: 24),
     ),
   ],
+  bottom: const TabBar(
+    labelColor: Colors.white,
+    indicatorColor: Colors.white,
+    unselectedLabelColor: Colors.white60,
+    labelStyle: TextStyle(fontSize: _tabFontSize),
+    unselectedLabelStyle: TextStyle(fontSize: _unselectedTabFontSize),
+    tabs: [Tab(text: 'Timer'), Tab(text: 'Alarm')],
+  ),
 );
+
+Widget _buildBodyApp() {
+  return const TabBarView(
+    children: [
+      Center(child: Text('Timer Content')),
+      Center(child: Text('Alarm Content')),
+    ],
+  );
+}
