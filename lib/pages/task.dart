@@ -11,8 +11,11 @@ class TaskScreen extends StatefulWidget {
 
 class _TaskScreenState extends State<TaskScreen> {
   final Color primaryColor = const Color(0xFF3629B7);
+  final double _titleSize = 22;
   final double _tabFontSize = 14.0;
   final double _unselectedTabFontSize = 12.0;
+
+  //String _selectedTabBar = 'todo';
 
   List<Widget> _buildTabBar() {
     return [
@@ -27,15 +30,16 @@ class _TaskScreenState extends State<TaskScreen> {
       title: Text(
         'Hi, Kimhong!',
         style: GoogleFonts.inter(
-          fontSize: 22,
+          fontSize: _titleSize,
           fontWeight: FontWeight.w300,
           color: Colors.white,
         ),
       ),
       bottom: TabBar(
         tabs: _buildTabBar(),
-        indicatorColor: Colors.transparent,
         labelColor: Colors.white,
+        indicatorSize: TabBarIndicatorSize.values.first,
+        indicatorColor: Colors.white,
         unselectedLabelColor: Colors.white60,
         unselectedLabelStyle: TextStyle(fontSize: _unselectedTabFontSize),
       ),
@@ -68,4 +72,3 @@ class _TaskScreenState extends State<TaskScreen> {
     );
   }
 }
-//kim branch
