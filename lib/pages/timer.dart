@@ -9,9 +9,22 @@ class TimerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
-      child: Scaffold(appBar: _appBar, body: _buildBodyApp(context)),
+      child: Scaffold(
+        appBar: _appBar,
+        body: _buildBodyApp(context),
+        floatingActionButton: _buildFloatingActionButton(context),
+      ),
     );
   }
+}
+
+Widget _buildFloatingActionButton(BuildContext context) {
+  return FloatingActionButton.extended(
+    backgroundColor: primaryColor,
+    onPressed: () {},
+    label: const Text('Alarm', style: TextStyle(color: Colors.white)),
+    icon: const Icon(Icons.timer, color: Colors.white),
+  );
 }
 
 const Color primaryColor = Color(0xFF3629B7);
