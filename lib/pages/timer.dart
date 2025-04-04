@@ -9,7 +9,7 @@ class TimerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
-      child: Scaffold(appBar: _appBar, body: _buildBodyApp()),
+      child: Scaffold(appBar: _appBar, body: _buildBodyApp(context)),
     );
   }
 }
@@ -38,6 +38,7 @@ PreferredSizeWidget get _appBar => AppBar(
   ],
   bottom: const TabBar(
     labelColor: Colors.white,
+    indicatorSize: TabBarIndicatorSize.tab,
     indicatorColor: Colors.white,
     unselectedLabelColor: Colors.white60,
     labelStyle: TextStyle(fontSize: _tabFontSize),
@@ -46,11 +47,91 @@ PreferredSizeWidget get _appBar => AppBar(
   ),
 );
 
-Widget _buildBodyApp() {
-  return const TabBarView(
-    children: [
-      Center(child: Text('Timer Content')),
-      Center(child: Text('Alarm Content')),
-    ],
+Widget _buildBodyApp(BuildContext context) {
+  return Center(
+    child: Column(
+      children: [
+        Flexible(
+          child: TabBarView(
+            children: [
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  SizedBox(
+                    height: 250,
+                    width: 250,
+                    child: CircularProgressIndicator(
+                      value: 1,
+                      strokeWidth: 4,
+                      color: primaryColor.withAlpha(100),
+                      backgroundColor: Colors.grey.shade200,
+                    ),
+                  ),
+                  Text(
+                    "30:00",
+                    style: GoogleFonts.inter(
+                      fontSize: 36,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 160),
+                    child: Text(
+                      "Ready",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 50,
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.play_circle_outline,
+                        size: 80,
+                        color: primaryColor,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    right: 50,
+                    bottom: 65,
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: SvgPicture.asset(
+                        'assets/skip-next.svg',
+                        width: 45,
+                        colorFilter: ColorFilter.mode(
+                          primaryColor.withValues(alpha: 60),
+                          BlendMode.srcIn,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: 50,
+                    bottom: 65,
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: SvgPicture.asset(
+                        'assets/loop.svg',
+                        width: 50,
+                        colorFilter: ColorFilter.mode(
+                          primaryColor.withValues(alpha: 60),
+                          BlendMode.srcIn,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Center(child: Text("Alarm", style: GoogleFonts.inter())),
+            ],
+          ),
+        ),
+      ],
+    ),
   );
 }

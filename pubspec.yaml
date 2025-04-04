@@ -26,11 +26,4 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/task-1.svg
-    - assets/task-2.svg
-    - assets/bank-1.svg
-    - assets/bank-2.svg
-    - assets/timer-1.svg
-    - assets/timer-2.svg
-    - assets/Bell.svg
-    - assets/progress.svg
+    - assets/
