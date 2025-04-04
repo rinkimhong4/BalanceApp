@@ -74,8 +74,8 @@ Widget _buildBodyApp(BuildContext context) {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 160),
+                  Positioned(
+                    top: 350,
                     child: Text(
                       "Ready",
                       style: TextStyle(
@@ -100,11 +100,13 @@ Widget _buildBodyApp(BuildContext context) {
                     bottom: 65,
                     child: IconButton(
                       onPressed: () {},
+
                       icon: SvgPicture.asset(
                         'assets/skip-next.svg',
                         width: 45,
+                        height: 45,
                         colorFilter: ColorFilter.mode(
-                          primaryColor.withValues(alpha: 60),
+                          primaryColor.withAlpha(60),
                           BlendMode.srcIn,
                         ),
                       ),
@@ -115,11 +117,13 @@ Widget _buildBodyApp(BuildContext context) {
                     bottom: 65,
                     child: IconButton(
                       onPressed: () {},
+
                       icon: SvgPicture.asset(
                         'assets/loop.svg',
                         width: 50,
+                        height: 50,
                         colorFilter: ColorFilter.mode(
-                          primaryColor.withValues(alpha: 60),
+                          primaryColor.withAlpha(60),
                           BlendMode.srcIn,
                         ),
                       ),
@@ -127,9 +131,58 @@ Widget _buildBodyApp(BuildContext context) {
                   ),
                 ],
               ),
-              Center(child: Text("Alarm", style: GoogleFonts.inter())),
+              ListView(
+                children: [
+                  _buildAlarmItem("7:00 AM", "Wake up", primaryColor),
+                  _buildAlarmItem("8:00 AM", "Breakfast", Colors.orange),
+                  _buildAlarmItem("11:00 PM", "Lunch Break", Colors.green),
+                  _buildAlarmItem("12:45 PM", "Go to school", Colors.amber),
+                  _buildAlarmItem("6:00 PM", "Dinner Time", Colors.red),
+                  _buildAlarmItem(
+                    "6:00 PM",
+                    "Online class",
+                    Colors.deepPurpleAccent,
+                  ),
+                ],
+              ),
             ],
           ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget _buildAlarmItem(String time, String label, Color color) {
+  return Container(
+    margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+    padding: const EdgeInsets.all(16),
+    decoration: BoxDecoration(
+      color: primaryColor.withValues(alpha: 10),
+      borderRadius: BorderRadius.circular(14),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey.withValues(alpha: 0.2),
+          spreadRadius: 2,
+          blurRadius: 5,
+          offset: Offset(0, 3),
+        ),
+      ],
+    ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              time,
+              style: GoogleFonts.inter(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
         ),
       ],
     ),
