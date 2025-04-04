@@ -182,8 +182,16 @@ Widget _buildAlarmItem(String time, String label, Color color) {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            Text(
+              label,
+              style: GoogleFonts.inter(
+                fontSize: 14,
+                color: Colors.grey.withValues(alpha: 60),
+              ),
+            ),
           ],
         ),
+        Switch(value: true, onChanged: (value) {}, activeColor: color),
       ],
     ),
   );
