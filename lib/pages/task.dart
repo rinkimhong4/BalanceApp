@@ -29,6 +29,10 @@ class _TaskScreenState extends State<TaskScreen> {
     Task(title: 'Clean room', isCompleted: true),
     Task(title: 'Do Homework', isCompleted: false),
     Task(title: 'Running', isCompleted: false),
+    Task(title: 'Clean ', isCompleted: true),
+    Task(title: 'Clean room', isCompleted: true),
+    Task(title: 'Clean room', isCompleted: true),
+    Task(title: 'Clean rroom', isCompleted: true),
   ];
 
   get _filteredTasks =>
@@ -122,10 +126,7 @@ class _TaskScreenState extends State<TaskScreen> {
         floatingActionButton: FloatingActionButton.extended(
           backgroundColor: primaryColor,
           onPressed: null,
-          label: const Text(
-            'Add New Task',
-            style: TextStyle(color: Colors.white),
-          ),
+          label: const Text('Add New', style: TextStyle(color: Colors.white)),
           icon: const Icon(Icons.add, color: Colors.white),
         ),
       ),
@@ -179,16 +180,19 @@ class TaskItem extends StatelessWidget {
                 ),
               ],
             ),
-            Row(
-              children: [
-                Icon(
-                  task.isCompleted
-                      ? Icons.check_circle
-                      : Icons.radio_button_unchecked,
-                  color: task.isCompleted ? Colors.green : Colors.grey,
-                ),
-                Icon(Icons.delete, color: Colors.red),
-              ],
+            SingleChildScrollView(
+              child: Row(
+                children: [
+                  Icon(
+                    task.isCompleted
+                        ? Icons.check_circle
+                        : Icons.radio_button_unchecked,
+                    color: task.isCompleted ? Colors.green : Colors.grey,
+                  ),
+                  const SizedBox(width: 14),
+                  Icon(Icons.delete, color: Colors.red),
+                ],
+              ),
             ),
           ],
         ),

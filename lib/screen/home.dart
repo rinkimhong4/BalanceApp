@@ -35,6 +35,7 @@ class _HomeState extends State<Home> {
           width: _iconsSize,
           height: _iconsSize,
         ),
+
         label: 'Balance',
       ),
       BottomNavigationBarItem(
