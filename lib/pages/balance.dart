@@ -1,7 +1,7 @@
+import 'package:balance/widget/transaction_list.dart';
 import 'package:flutter/material.dart';
 import 'package:balance/widget/balance_header.dart';
 import 'package:balance/widget/budget_summary_card.dart';
-import 'package:balance/widget/transaction_list.dart';
 import 'package:balance/widget/transaction_section.dart';
 import 'package:google_fonts/google_fonts.dart';
 
