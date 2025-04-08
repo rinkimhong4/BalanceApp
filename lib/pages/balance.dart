@@ -94,24 +94,22 @@ class _BalanceScreenState extends State<BalanceScreen> {
                   labelColor: Color(0xFF3629B7),
                   unselectedLabelColor: Colors.black,
                   tabs: [
-                    SingleChildScrollView(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.all_inbox,
-                            color: Color(0xFF05a56a),
-                            size: 18,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.all_inbox,
+                          color: Color(0xFF05a56a),
+                          size: 18,
+                        ),
+                        SizedBox(width: 4),
+                        Tab(
+                          child: Text(
+                            'All',
+                            style: GoogleFonts.inter(fontSize: 14),
                           ),
-                          SizedBox(width: 4),
-                          Tab(
-                            child: Text(
-                              'All',
-                              style: GoogleFonts.inter(fontSize: 14),
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                     Tab(
                       child: Row(
@@ -129,22 +127,20 @@ class _BalanceScreenState extends State<BalanceScreen> {
                         ],
                       ),
                     ),
-                    SingleChildScrollView(
-                      child: Tab(
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.arrow_circle_down_sharp,
-                              color: Colors.red,
-                              size: 18,
-                            ),
-                            SizedBox(width: 4),
-                            Text(
-                              'Expense',
-                              style: GoogleFonts.inter(fontSize: 14),
-                            ),
-                          ],
-                        ),
+                    Tab(
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.arrow_circle_down_sharp,
+                            color: Colors.red,
+                            size: 18,
+                          ),
+                          SizedBox(width: 4),
+                          Text(
+                            'Expense',
+                            style: GoogleFonts.inter(fontSize: 14),
+                          ),
+                        ],
                       ),
                     ),
                   ],
