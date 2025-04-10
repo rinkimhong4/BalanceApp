@@ -39,7 +39,6 @@ class BalanceHeader extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   get preferredSize => const Size.fromHeight(kToolbarHeight);
-  // Write more for appBar here
 
   // get leadingApp => IconButton(
   //   onPressed: onLeadingPressed,
