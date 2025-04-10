@@ -47,6 +47,23 @@ class TransactionList extends StatelessWidget {
     Map<String, dynamic> group, {
     required List<Map<String, dynamic>> items,
   }) {
+    double calculatedTotal = 0;
+    for (var item in items) {
+      double amount =
+          double.tryParse(
+            item['amount'].toString().replaceAll(RegExp(r'[^\d\.]'), ''),
+          ) ??
+          0;
+      if ((item['amount'] as String).startsWith('+')) {
+        calculatedTotal += amount;
+      } else {
+        calculatedTotal -= amount;
+      }
+    }
+
+    String total =
+        group['total']?.toString() ?? '\$${calculatedTotal.toStringAsFixed(2)}';
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -56,25 +73,25 @@ class TransactionList extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                group['date'],
+                group['date'].toString(),
                 style: GoogleFonts.inter(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                   color: Colors.black,
                 ),
               ),
-              if (group['total'] != null)
-                Text(
-                  group['total'],
-                  style: GoogleFonts.inter(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black,
-                  ),
+              Text(
+                total,
+                style: GoogleFonts.inter(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black,
                 ),
+              ),
             ],
           ),
         ),
+
         ...items.map((item) {
           return ListTile(
             leading: const Icon(
@@ -83,22 +100,22 @@ class TransactionList extends StatelessWidget {
               size: 40,
             ),
             title: Text(
-              item['title'],
+              item['title'].toString(),
               style: GoogleFonts.inter(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),
             ),
             subtitle: Text(
-              item['datetime'],
+              item['datetime'].toString(),
               style: GoogleFonts.inter(fontSize: 14, color: Colors.grey),
             ),
             trailing: Text(
-              item['amount'],
+              item['amount'].toString(),
               style: GoogleFonts.inter(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
-                color: item['isIncome'] ? incomeColor : expenseColor,
+                color: item['isIncome'] as bool ? incomeColor : expenseColor,
               ),
             ),
           );

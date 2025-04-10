@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-// budget_summary card builds a card that displays budget summary information
-// such as title, icon, amount, and color.
 class BudgetSummaryCard extends StatelessWidget {
   final String title;
   final IconData icon;
@@ -23,7 +21,7 @@ class BudgetSummaryCard extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       width: 150,
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.1),
+        color: color.withAlpha(20),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(

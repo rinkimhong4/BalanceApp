@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:balance/widget/balance_header.dart';
 
 class TimerScreen extends StatelessWidget {
   const TimerScreen({super.key});
@@ -28,19 +29,12 @@ Widget _buildFloatingActionButton(BuildContext context) {
 }
 
 const Color primaryColor = Color(0xFF3629B7);
-const double _titleSize = 22;
 const double _tabFontSize = 16.0;
 const double _unselectedTabFontSize = 15.0;
 
 PreferredSizeWidget get _appBar => AppBar(
-  title: Text(
-    'Hi, Kimhong!',
-    style: GoogleFonts.inter(
-      fontSize: _titleSize,
-      fontWeight: FontWeight.w300,
-      color: Colors.white,
-    ),
-  ),
+  title: BalanceHeader(userName: 'Kimhong', onBellPressed: () {}),
+
   centerTitle: true,
   backgroundColor: primaryColor,
   actions: [

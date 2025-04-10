@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:balance/widget/balance_header.dart';
 import 'package:balance/widget/budget_summary_card.dart';
 import 'package:balance/widget/transaction_section.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class BalanceScreen extends StatefulWidget {
   const BalanceScreen({super.key});
@@ -18,36 +17,75 @@ class _BalanceScreenState extends State<BalanceScreen> {
     Icons.arrow_circle_up_sharp,
     Icons.arrow_circle_down_sharp,
   ];
-  final List _dBudget = ['\$5000.00', '-\$500.00'];
-  final List _colorBudget = [Color(0xFF05a56a), Colors.red];
+  final List _dBudget = ['\$5000.00', '-\$10'];
+  final List _colorBudget = [const Color(0xFF05a56a), Colors.red];
 
   final List<Map<String, dynamic>> _transactions = [
     {
       'date': 'Today',
       'items': [
         {
-          'title': 'Dinner',
+          'title': 'Coffee',
           'datetime': '15/mar/2025 - 5:11am',
           'amount': '-\$10',
           'isIncome': false,
         },
         {
           'title': 'Salary',
-          'datetime': '15/mar/2025 - 5:11am',
-          'amount': '+\$1000',
+          'datetime': '15/mar/2025 - 8:00am',
+          'amount': '+\$5000',
           'isIncome': true,
         },
       ],
-      'total': '\$1500',
     },
     {
       'date': 'Yesterday',
       'items': [
         {
-          'title': 'Coffee',
-          'datetime': '14/mar/2025 - 8:45am',
-          'amount': '-\$10',
+          'title': 'Groceries',
+          'datetime': '14/mar/2025 - 6:30pm',
+          'amount': '-\$50',
           'isIncome': false,
+        },
+        {
+          'title': 'Freelance Work',
+          'datetime': '14/mar/2025 - 3:00pm',
+          'amount': '+\$200',
+          'isIncome': true,
+        },
+      ],
+    },
+    {
+      'date': '13/mar/2025',
+      'items': [
+        {
+          'title': 'Electricity Bill',
+          'datetime': '13/mar/2025 - 10:00am',
+          'amount': '-\$100',
+          'isIncome': false,
+        },
+        {
+          'title': 'Gift',
+          'datetime': '13/mar/2025 - 2:00pm',
+          'amount': '+\$50',
+          'isIncome': true,
+        },
+      ],
+    },
+    {
+      'date': '19/mar/2025',
+      'items': [
+        {
+          'title': 'Electricity Bill',
+          'datetime': '13/mar/2025 - 10:00am',
+          'amount': '-\$100',
+          'isIncome': false,
+        },
+        {
+          'title': 'Gift',
+          'datetime': '13/mar/2025 - 2:00pm',
+          'amount': '+\$50',
+          'isIncome': true,
         },
       ],
     },
@@ -58,114 +96,60 @@ class _BalanceScreenState extends State<BalanceScreen> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        appBar: BalanceHeader(
-          userName: 'Kimhong',
-          // onLeadingPressed: () {},
-          onBellPressed: () {},
-        ),
-        body: CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(
-              child: Container(
-                padding: EdgeInsets.only(top: 14),
-                margin: EdgeInsets.all(16),
-                height: 120,
-                width: double.infinity,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: List.generate(
-                    _titleBudget.length,
-                    (index) => BudgetSummaryCard(
-                      title: _titleBudget[index],
-                      icon: _iconBudget[index],
-                      amount: _dBudget[index],
-                      color: _colorBudget[index],
-                    ),
+        appBar: BalanceHeader(userName: 'Kimhong', onBellPressed: () {}),
+        body: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.only(top: 14),
+              margin: const EdgeInsets.all(16),
+              height: 120,
+              width: double.infinity,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: List.generate(
+                  _titleBudget.length,
+                  (index) => BudgetSummaryCard(
+                    title: _titleBudget[index],
+                    icon: _iconBudget[index],
+                    amount: _dBudget[index],
+                    color: _colorBudget[index],
                   ),
                 ),
               ),
             ),
-            SliverToBoxAdapter(child: TransactionSection()),
-            SliverPersistentHeader(
-              delegate: _SliverTabBarDelegate(
-                TabBar(
-                  indicatorColor: Color(0xFF3629B7),
-                  indicatorSize: TabBarIndicatorSize.label,
-                  labelColor: Color(0xFF3629B7),
-                  unselectedLabelColor: Colors.black,
-                  tabs: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.all_inbox,
-                          color: Color(0xFF05a56a),
-                          size: 18,
-                        ),
-                        SizedBox(width: 4),
-                        Tab(
-                          child: Text(
-                            'All',
-                            style: GoogleFonts.inter(fontSize: 14),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Tab(
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.arrow_circle_up_sharp,
-                            color: Color(0xFF05a56a),
-                            size: 18,
-                          ),
-                          SizedBox(width: 4),
-                          Text(
-                            'Income',
-                            style: GoogleFonts.inter(fontSize: 14),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Tab(
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.arrow_circle_down_sharp,
-                            color: Colors.red,
-                            size: 18,
-                          ),
-                          SizedBox(width: 4),
-                          Text(
-                            'Expense',
-                            style: GoogleFonts.inter(fontSize: 14),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                Color(0xFF3629B7),
-              ),
+
+            const TransactionSection(),
+
+            const TabBar(
+              indicatorColor: Color.fromARGB(255, 116, 107, 215),
+              indicatorSize: TabBarIndicatorSize.tab,
+              labelColor: Color(0xFF3629B7),
+              unselectedLabelColor: Colors.black,
+              tabs: [
+                Tab(text: 'All'),
+                Tab(text: 'Income'),
+                Tab(text: 'Expense'),
+              ],
             ),
-            SliverFillRemaining(
+
+            Expanded(
               child: TabBarView(
                 children: [
                   TransactionList(
                     transactions: _transactions,
-                    incomeColor: Color(0xFF05a56a),
+                    incomeColor: const Color(0xFF05a56a),
                     expenseColor: Colors.red,
                     transactionType: 'All',
                   ),
                   TransactionList(
                     transactions: _transactions,
-                    incomeColor: Color(0xFF05a56a),
+                    incomeColor: const Color(0xFF05a56a),
                     expenseColor: Colors.red,
                     transactionType: 'Income',
                   ),
                   TransactionList(
                     transactions: _transactions,
-                    incomeColor: Color(0xFF05a56a),
+                    incomeColor: const Color(0xFF05a56a),
                     expenseColor: Colors.red,
                     transactionType: 'Expense',
                   ),
@@ -176,35 +160,10 @@ class _BalanceScreenState extends State<BalanceScreen> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
-          backgroundColor: Color(0xFF3629B7),
-          child: Icon(Icons.add, color: Colors.white),
+          backgroundColor: const Color(0xFF3629B7),
+          child: const Icon(Icons.add, color: Colors.white),
         ),
       ),
     );
   }
-}
-
-class _SliverTabBarDelegate extends SliverPersistentHeaderDelegate {
-  _SliverTabBarDelegate(this._tabBar, this.primaryColor);
-
-  final TabBar _tabBar;
-  final Color primaryColor;
-
-  @override
-  double get minExtent => _tabBar.preferredSize.height;
-
-  @override
-  double get maxExtent => _tabBar.preferredSize.height;
-
-  @override
-  Widget build(
-    BuildContext context,
-    double shrinkOffset,
-    bool overlapsContent,
-  ) {
-    return Container(color: primaryColor.withAlpha(5), child: _tabBar);
-  }
-
-  @override
-  bool shouldRebuild(_SliverTabBarDelegate oldDelegate) => false;
 }

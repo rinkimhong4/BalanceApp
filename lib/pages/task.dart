@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:balance/widget/balance_header.dart';
 
 class TaskScreen extends StatefulWidget {
   const TaskScreen({super.key});
@@ -11,7 +11,6 @@ class TaskScreen extends StatefulWidget {
 
 class _TaskScreenState extends State<TaskScreen> {
   final Color primaryColor = const Color(0xFF3629B7);
-  final double _titleSize = 22;
   final double _tabFontSize = 14.0;
   final double _unselectedTabFontSize = 12.0;
 
@@ -72,14 +71,7 @@ class _TaskScreenState extends State<TaskScreen> {
 
   AppBar _buildAppBar() {
     return AppBar(
-      title: Text(
-        'Hi, Kimhong!',
-        style: GoogleFonts.inter(
-          fontSize: _titleSize,
-          fontWeight: FontWeight.w300,
-          color: Colors.white,
-        ),
-      ),
+      title: BalanceHeader(userName: 'Kimhong', onBellPressed: () {}),
       bottom: TabBar(
         onTap:
             (index) => setState(
