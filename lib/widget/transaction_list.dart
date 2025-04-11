@@ -91,7 +91,6 @@ class TransactionList extends StatelessWidget {
             ],
           ),
         ),
-
         ...items.map((item) {
           return ListTile(
             leading: const Icon(

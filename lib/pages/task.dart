@@ -1,5 +1,6 @@
+import 'package:balance/widget/floating.dart';
+import 'package:balance/widget/tabbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:balance/widget/balance_header.dart';
 
 class TaskScreen extends StatefulWidget {
@@ -11,8 +12,6 @@ class TaskScreen extends StatefulWidget {
 
 class _TaskScreenState extends State<TaskScreen> {
   final Color primaryColor = const Color(0xFF3629B7);
-  final double _tabFontSize = 14.0;
-  final double _unselectedTabFontSize = 12.0;
 
   String _selectedTab = 'progress';
   final _tasks = [
@@ -39,28 +38,28 @@ class _TaskScreenState extends State<TaskScreen> {
           ? _tasks.where((task) => !task.isCompleted).toList()
           : _tasks.where((task) => task.isCompleted).toList();
 
-  get tabBarWidgets => [
-    Tab(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(Icons.radio_button_unchecked),
-          SizedBox(width: 5),
-          Text('Progress', style: TextStyle(fontSize: _tabFontSize)),
-        ],
-      ),
-    ),
-    Tab(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(Icons.check_circle),
-          SizedBox(width: 5),
-          Text('Completed', style: TextStyle(fontSize: _tabFontSize)),
-        ],
-      ),
-    ),
-  ];
+  // get tabBarWidgets => [
+  //   Tab(
+  //     child: Row(
+  //       mainAxisAlignment: MainAxisAlignment.center,
+  //       children: [
+  //         Icon(Icons.radio_button_unchecked),
+  //         SizedBox(width: 5),
+  //         Text('Progress', style: TextStyle(fontSize: _tabFontSize)),
+  //       ],
+  //     ),
+  //   ),
+  //   Tab(
+  //     child: Row(
+  //       mainAxisAlignment: MainAxisAlignment.center,
+  //       children: [
+  //         Icon(Icons.check_circle),
+  //         SizedBox(width: 5),
+  //         Text('Completed', style: TextStyle(fontSize: _tabFontSize)),
+  //       ],
+  //     ),
+  //   ),
+  // ];
 
   get bodyApp => TabBarView(
     children: [
@@ -77,21 +76,16 @@ class _TaskScreenState extends State<TaskScreen> {
             (index) => setState(
               () => _selectedTab = index == 0 ? 'progress' : 'completed',
             ),
-        tabs: tabBarWidgets,
+        tabs: [TabItem(label: 'progress'), TabItem(label: 'completed')],
+        labelStyle: TextStyle(fontSize: 16),
         labelColor: Colors.white,
         indicatorSize: TabBarIndicatorSize.tab,
         indicatorColor: Colors.white,
         unselectedLabelColor: Colors.white60,
-        unselectedLabelStyle: TextStyle(fontSize: _unselectedTabFontSize),
+        // unselectedLabelStyle: TextStyle(fontSize: _unselectedTabFontSize),
       ),
       centerTitle: true,
       backgroundColor: primaryColor,
-      actions: [
-        IconButton(
-          onPressed: () {},
-          icon: SvgPicture.asset('assets/Bell.svg', width: 24, height: 24),
-        ),
-      ],
     );
   }
 
@@ -111,16 +105,11 @@ class _TaskScreenState extends State<TaskScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: tabBarWidgets.length,
+      length: 2,
       child: Scaffold(
         appBar: _buildAppBar(),
         body: bodyApp,
-        floatingActionButton: FloatingActionButton.extended(
-          backgroundColor: primaryColor,
-          onPressed: null,
-          label: const Text('Add New', style: TextStyle(color: Colors.white)),
-          icon: const Icon(Icons.add, color: Colors.white),
-        ),
+        floatingActionButton: FloatingActionButtonWidget(),
       ),
     );
   }

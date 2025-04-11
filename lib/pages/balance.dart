@@ -1,8 +1,10 @@
+import 'package:balance/widget/floating.dart';
+import 'package:balance/widget/tabbar.dart';
 import 'package:balance/widget/transaction_list.dart';
 import 'package:flutter/material.dart';
 import 'package:balance/widget/balance_header.dart';
 import 'package:balance/widget/budget_summary_card.dart';
-import 'package:balance/widget/transaction_section.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class BalanceScreen extends StatefulWidget {
   const BalanceScreen({super.key});
@@ -117,21 +119,32 @@ class _BalanceScreenState extends State<BalanceScreen> {
                 ),
               ),
             ),
-
-            const TransactionSection(),
-
-            const TabBar(
+            Row(
+              children: [
+                Padding(padding: EdgeInsets.all(8)),
+                Text(
+                  'Recent transactions',
+                  style: GoogleFonts.inter(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+            //TransactionSection(),
+            TabBar(
+              labelStyle: TextStyle(fontSize: 16),
               indicatorColor: Color.fromARGB(255, 116, 107, 215),
               indicatorSize: TabBarIndicatorSize.tab,
               labelColor: Color(0xFF3629B7),
-              unselectedLabelColor: Colors.black,
+              unselectedLabelColor: Colors.black54,
               tabs: [
-                Tab(text: 'All'),
-                Tab(text: 'Income'),
-                Tab(text: 'Expense'),
+                TabItem(label: 'All'),
+                TabItem(label: 'Income'),
+                TabItem(label: 'Expense'),
               ],
             ),
-
             Expanded(
               child: TabBarView(
                 children: [
@@ -158,11 +171,7 @@ class _BalanceScreenState extends State<BalanceScreen> {
             ),
           ],
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          backgroundColor: const Color(0xFF3629B7),
-          child: const Icon(Icons.add, color: Colors.white),
-        ),
+        floatingActionButton: FloatingActionButtonWidget(),
       ),
     );
   }
