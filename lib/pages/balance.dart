@@ -132,7 +132,6 @@ class _BalanceScreenState extends State<BalanceScreen> {
                 ),
               ],
             ),
-            //TransactionSection(),
             TabBar(
               labelStyle: TextStyle(fontSize: 16),
               indicatorColor: Color.fromARGB(255, 116, 107, 215),

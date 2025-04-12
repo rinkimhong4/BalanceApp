@@ -38,29 +38,6 @@ class _TaskScreenState extends State<TaskScreen> {
           ? _tasks.where((task) => !task.isCompleted).toList()
           : _tasks.where((task) => task.isCompleted).toList();
 
-  // get tabBarWidgets => [
-  //   Tab(
-  //     child: Row(
-  //       mainAxisAlignment: MainAxisAlignment.center,
-  //       children: [
-  //         Icon(Icons.radio_button_unchecked),
-  //         SizedBox(width: 5),
-  //         Text('Progress', style: TextStyle(fontSize: _tabFontSize)),
-  //       ],
-  //     ),
-  //   ),
-  //   Tab(
-  //     child: Row(
-  //       mainAxisAlignment: MainAxisAlignment.center,
-  //       children: [
-  //         Icon(Icons.check_circle),
-  //         SizedBox(width: 5),
-  //         Text('Completed', style: TextStyle(fontSize: _tabFontSize)),
-  //       ],
-  //     ),
-  //   ),
-  // ];
-
   get bodyApp => TabBarView(
     children: [
       _buildTaskList(context, 'progress'),
@@ -82,7 +59,6 @@ class _TaskScreenState extends State<TaskScreen> {
         indicatorSize: TabBarIndicatorSize.tab,
         indicatorColor: Colors.white,
         unselectedLabelColor: Colors.white60,
-        // unselectedLabelStyle: TextStyle(fontSize: _unselectedTabFontSize),
       ),
       centerTitle: true,
       backgroundColor: primaryColor,
@@ -92,7 +68,6 @@ class _TaskScreenState extends State<TaskScreen> {
   Widget _buildTaskList(BuildContext context, String tab) {
     _selectedTab = tab;
     List<Task> tasks = _filteredTasks;
-
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: ListView.builder(
@@ -123,9 +98,7 @@ class Task {
 
 class TaskItem extends StatelessWidget {
   const TaskItem({super.key, required this.task});
-
   final Task task;
-
   @override
   Widget build(BuildContext context) {
     return Card(

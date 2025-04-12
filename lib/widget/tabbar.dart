@@ -10,11 +10,7 @@ class TabItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(icon, color: Colors.white, size: 18),
-        // SizedBox(width: 4),
-        Tab(text: label),
-      ],
+      children: [Icon(icon, color: Colors.white, size: 18), Tab(text: label)],
     );
   }
 }
