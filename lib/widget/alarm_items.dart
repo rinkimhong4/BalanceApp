@@ -1,4 +1,3 @@
-import 'package:balance/pages/timer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -24,32 +23,38 @@ class AlarmItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(14),
         boxShadow: [
           BoxShadow(
-            color: primaryColor.withAlpha(10),
+            color: color.withAlpha(50),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: const Offset(0, 3),
+            offset: Offset(0, 2),
           ),
         ],
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Row(
             children: [
-              Text(
-                time,
-                style: GoogleFonts.inter(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                label,
-                style: GoogleFonts.inter(
-                  fontSize: 14,
-                  color: Colors.grey.withValues(alpha: 70),
-                ),
+              Icon(Icons.alarm, color: color, size: 30),
+              SizedBox(width: 14),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    time,
+                    style: GoogleFonts.inter(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    label,
+                    style: GoogleFonts.inter(
+                      fontSize: 14,
+                      color: Colors.grey.withValues(alpha: 80),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

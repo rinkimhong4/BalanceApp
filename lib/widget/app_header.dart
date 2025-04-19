@@ -10,6 +10,7 @@ class BalanceHeader extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     required this.userName,
     required this.onBellPressed,
+    TabBar? bottom,
   });
 
   @override

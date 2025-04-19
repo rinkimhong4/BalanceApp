@@ -16,7 +16,7 @@ class TimerScreen extends StatelessWidget {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        appBar: _buildAppBar,
+        appBar: _buildAppBar(),
         body: _buildBody(context),
         floatingActionButton: FloatingActionButtonWidget(),
       ),
@@ -24,7 +24,7 @@ class TimerScreen extends StatelessWidget {
   }
 }
 
-get _buildAppBar {
+AppBar _buildAppBar() {
   return AppBar(
     title: BalanceHeader(userName: 'Kimhong', onBellPressed: () {}),
     centerTitle: true,
@@ -60,6 +60,7 @@ class _TimerTab extends StatelessWidget {
           _TimerCircle(time: "30:00", status: "Ready"),
           SizedBox(height: 40),
           _TimerControls(),
+          SizedBox(height: 40),
         ],
       ),
     );
@@ -93,7 +94,6 @@ class _TimerCircle extends StatelessWidget {
         ),
         Positioned(
           top: 180,
-
           child: Text(
             status!,
             style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
@@ -146,7 +146,7 @@ class _TimerControls extends StatelessWidget {
 }
 
 class _AlarmTab extends StatelessWidget {
-  final List<Map<String, dynamic>> alarms = const [
+  final List<Map<String, dynamic>> alarms = [
     {"time": "7:00 AM", "label": "Wake up", "color": primaryColor},
     {"time": "8:00 AM", "label": "Breakfast", "color": Colors.orange},
     {"time": "11:00 AM", "label": "Lunch Break", "color": Colors.green},
