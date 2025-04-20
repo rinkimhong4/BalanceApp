@@ -11,7 +11,7 @@ class TaskScreen extends StatefulWidget {
 }
 
 class _TaskScreenState extends State<TaskScreen> {
-  final Color primaryColor = const Color(0xFF3629B7);
+  final Color primaryColor = Color(0xFF3629B7);
 
   String _selectedTab = 'progress';
   final _tasks = [
@@ -69,7 +69,7 @@ class _TaskScreenState extends State<TaskScreen> {
     _selectedTab = tab;
     List<Task> tasks = _filteredTasks;
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: EdgeInsets.all(16.0),
       child: ListView.builder(
         itemCount: tasks.length,
         itemBuilder: (context, index) => TaskItem(task: tasks[index]),
@@ -113,13 +113,10 @@ class TaskItem extends StatelessWidget {
               children: [
                 Text(
                   task.title,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                 ),
                 Row(
-                  children: const [
+                  children: [
                     Icon(Icons.calendar_today, size: 14, color: Colors.grey),
                     Text(
                       'Mar,03,2025  ',
@@ -143,7 +140,7 @@ class TaskItem extends StatelessWidget {
                         : Icons.radio_button_unchecked,
                     color: task.isCompleted ? Colors.green : Colors.grey,
                   ),
-                  const SizedBox(width: 14),
+                  SizedBox(width: 14),
                   Icon(Icons.delete, color: Colors.red),
                 ],
               ),
